@@ -7,7 +7,26 @@
     <link rel="stylesheet" href="/css/app.min.css">
 </head>
 <body>
-
-<script src="/js/app.min.js"></script>
+    <div id="container">
+        <div class="row">G
+            <div class="col-md-6">
+                <div class="col-offset-3">
+                    <!-- @submit.prevent directive add a submit listener to the form
+                        When submit the form the changeRepo method will be fire -->
+                    <form id="changeRepoForm" @submit.prevent="changeRepo()" class="form-inline">
+                        <div class="form-group">
+                            <label for="fullRepoName">Full Repo Name</label>
+                            <!-- The b-mode directive creates the two-way binding between 
+                                the value of the input and the value of fullRepoName -->
+                            <input type="text" name="fullRepoName" v-model="fullRepoName" class="form-control">
+                        </div>
+                        <input type="submit" value="Get repo filesystem!" class="btn btn-default">
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/app.min.js"></script>
 </body>
 </html>
