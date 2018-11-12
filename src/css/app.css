@@ -2,6 +2,10 @@ body {
     padding-top: 30px;
 }
 
+.directory a {
+    cursor: pointer;
+}
+
 #changeRepoForm {
     margin-bottom: 30px;
 }

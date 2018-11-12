@@ -1,5 +1,6 @@
 var Vue = require('vue');
 Vue.config.debug = true;
+Vue.use(require('vue-resource'));
 
 // Vue instance
 new Vue({
@@ -21,5 +22,8 @@ new Vue({
             console.log("repo:", this.repo);
             console.groupEnd("Vue Data");
         }
+    },
+    components: {
+        githubFileExplorer: require('./components/github-file-explorer')
     }
 });
