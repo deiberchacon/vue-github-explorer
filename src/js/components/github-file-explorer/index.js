@@ -16,9 +16,6 @@ module.exports = {
             required: true
         }
     },
-    created: function() {
-        if (this.username && this.repo) this.getFiles();
-    },
     computed: {
         fullRepoUrl: function() {
             return this.username + '/' + this.repo;
@@ -60,4 +57,12 @@ module.exports = {
             this.getFiles();
         }
     },
+    watch: {
+        repo: function(newVal, oldVal) {
+            this.getFiles();
+        }
+    },
+    created: function() {
+        if (this.username && this.repo) this.getFiles();
+    }
 };
