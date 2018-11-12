@@ -7,7 +7,7 @@ module.exports = {
         };
     },
     props: {
-        'username': {
+        username: {
             type: String,
             required: true
         },
@@ -43,6 +43,7 @@ module.exports = {
             this.$http.get('https://api.github.com/repos/' + this.fullRepoUrl + '/contents' + this.path,
                 function(data) {
                     this.files = data;
+                    this.$dispatch('repoFound', data.length ? true : false);
                 }
             );
         },

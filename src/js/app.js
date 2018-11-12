@@ -8,19 +8,36 @@ new Vue({
     data: {
         fullRepoName: '',
         username: '',
-        repo: ''
+        repo: '',
+        found: false,
+        active: false
     },
     methods: {
-        changeRepo: function () {
+        toggleActive: function() {
+            this.active = this.active ? false : true;
+        },
+        triggerSubmit: function() {
+            this.$els.container
+
+            console.log(this)
+            
+            // this.$els.repoBtn.click();
+        },
+        changeRepo: function() {         
             var splitData = this.fullRepoName.split('/');
             this.username = splitData[0];
             this.repo = splitData[1];
-
-            console.group("Vue Data");
-            console.log("fullRepoName:", this.fullRepoName);
-            console.log("username:", this.username);
-            console.log("repo:", this.repo);
-            console.groupEnd("Vue Data");
+        },
+        repoFound: function(bool) {
+            this.found = bool;
+        },
+    },
+    events: {
+        'repoFound': 'repoFound'
+    },
+    computed: {
+        foundRepo: function() {
+            return this.found;
         }
     },
     components: {

@@ -6,24 +6,22 @@
     <link rel="stylesheet" href="css/app.min.css">
 </head>
 <body>
-    <div id="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <!-- @submit.prevent directive add a submit listener to the form
-                    When submit the form the changeRepo method will be fire -->
-                <form id="changeRepoForm" @submit.prevent="changeRepo()" class="form-inline">
-                    <div class="form-group">
-                        <label for="fullRepoName">Full Repo Name</label>
-                        <!-- The b-mode directive creates the two-way binding between 
-                            the value of the input and the value of fullRepoName -->
-                        <input type="text" name="fullRepoName" v-model="fullRepoName" class="form-control">
-                    </div>
-                    <input type="submit" value="Get repo filesystem!" class="btn btn-default">
+    <div id="container" class="search-holder" :class="{active: active == true}">
+        <!-- <div class="row"> -->
+            <!-- <div class="col-md-6 col-md-offset-3"> -->
+                <div class="circle"></div>
+                <form id="changeRepoForm" @submit.prevent="changeRepo()" class="form">
+                    <!-- <div class="search-button"></div> -->
+                    <div class="search-button" @click="toggleActive()"></div>
+                    <input style="display:none" type="submit" v-el:repo-btn value="Get files">
+                    <input type="text" name="fullRepoName" v-model="fullRepoName" class="search-input">
                 </form>
-                <hr>
-                <github-file-explorer :username="username" :repo="repo"></github-file-explorer>
-            </div>
-        </div>
+                <div v-show="foundRepo">
+                    <hr>
+                    <github-file-explorer :username="username" :repo="repo"></github-file-explorer>
+                </div>
+            <!-- </div> -->
+        <!-- </div> -->
     </div>
     <script src="js/app.min.js"></script>
 </body>

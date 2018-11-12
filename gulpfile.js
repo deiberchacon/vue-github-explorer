@@ -26,7 +26,8 @@ gulp.task('css', function() {
     gulp.src(stylesheets)
         .pipe(concat('app.min.css'))
         .pipe(gulp.dest('dist/css'))
-});
+        .pipe(connect.reload());
+}); 
 
 gulp.task('fonts', function() {
     var fonts = [
@@ -74,7 +75,11 @@ gulp.task('watch:js', function() {
     gulp.watch('src/js/**/*.*', ['js']);
 });
 
+gulp.task('watch:css', function() {
+    gulp.watch('src/css/**/*.*', ['css']);
+});
+
 gulp.task('compile', ['html', 'css', 'fonts', 'js']);
-gulp.task('watch', ['compile', 'watch:html', 'watch:js']);
+gulp.task('watch', ['compile', 'watch:html', 'watch:js', 'watch:css']);
 gulp.task('serve', ['watch', 'start-server']);
 gulp.task('default', ['compile']);
