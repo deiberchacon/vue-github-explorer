@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <caption>{{ path }}</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="text-right">
+                        <button class="btn btn-default btn-xs" @click="goBack()" v-if="path  !== '/'">Go back</button>
+                    </th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr v-for="file in sortedFiles">
+                        <td>
+                            <div class="file" v-if="file.type === 'file'">
+                                <i class="fa fa-file-o"></i>
+                                {{ file.name }}
+                            </div>
+                            <div class="directory" v-if="file.type === 'dir'">
+                                <i class="fa fa-folder"></i>
+                                <a @click="changePath(file.path)">{{ file.name }}</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-right">
+                                <a href="{{ file.download_url }}" download v-if="file.type === 'file'">
+                                    <i class="fa fa-cloud-download"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js Github Explorer Blog</title>
+
+    <link rel="stylesheet" href="/css/app.min.css">
+</head>
+<body>
+    <div id="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <!-- @submit.prevent directive add a submit listener to the form
+                    When submit the form the changeRepo method will be fire -->
+                <form id="changeRepoForm" @submit.prevent="changeRepo()" class="form-inline">
+                    <div class="form-group">
+                        <label for="fullRepoName">Full Repo Name</label>
+                        <!-- The b-mode directive creates the two-way binding between 
+                            the value of the input and the value of fullRepoName -->
+                        <input type="text" name="fullRepoName" v-model="fullRepoName" class="form-control">
+                    </div>
+                    <input type="submit" value="Get repo filesystem!" class="btn btn-default">
+                </form>
+                <hr>
+                <github-file-explorer :username="username" :repo="repo"></github-file-explorer>
+            </div>
+        </div>
+    </div>
+    <script src="/js/app.min.js"></script>
+</body>
+</html>
