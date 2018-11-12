@@ -1,2 +1,2 @@
-# vuejs-github-explorer-blog
-A Github Explorer Using Vue.js
+# Vue.js Github Explorer
+A Github explorer using Vue.js
